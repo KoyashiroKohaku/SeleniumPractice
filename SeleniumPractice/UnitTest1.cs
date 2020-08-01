@@ -9,6 +9,41 @@ namespace SeleniumPractice
     public class UnitTest1
     {
         [TestMethod]
+        public void GoogleSearchTest()
+        {
+            using var driver = new ChromeDriver();
+
+            // ウィンドウ最大化
+            driver.Manage().Window.Maximize();
+
+            // Qiitaにアクセス
+            driver.Navigate().GoToUrl("https://www.google.com/");
+
+            // 検索ボックス取得
+            var input = driver.FindElementByCssSelector("form div div div div div input");
+
+            // 検索ボックスに selenium をセット
+            input.SendKeys("selenium");
+
+            // Enterキー押下
+            input.SendKeys(Keys.Enter);
+            Assert.IsTrue(driver.Url.Contains("https://www.google.com/search"));
+            Assert.IsTrue(driver.Url.Contains("q=selenium"));
+
+            // 検索結果をスクリーンショットに出力
+            File.WriteAllBytes("GoogleSearchTest_result_0.png", driver.GetScreenshot().AsByteArray);
+
+            // 次ページへのリンクを押下
+            driver.FindElementById("pnnext").Click();
+            Assert.IsTrue(driver.Url.Contains("https://www.google.com/search"));
+            Assert.IsTrue(driver.Url.Contains("q=selenium"));
+            Assert.IsTrue(driver.Url.Contains("start=10"));
+
+            // 検索結果をスクリーンショットに出力
+            File.WriteAllBytes("GoogleSearchTest_result_1.png", driver.GetScreenshot().AsByteArray);
+        }
+
+        [TestMethod]
         public void QiitaSearchTest()
         {
             using var driver = new ChromeDriver();
