@@ -11,11 +11,7 @@ namespace SeleniumPractice
         [TestMethod]
         public void GoogleSearchTest()
         {
-            var options = new ChromeOptions();
-            options.AddArgument("--headless");
-            options.AddArgument("--window-size=1920,1080");
-
-            using var driver = new ChromeDriver(options);
+            using var driver = CreateDriver();
 
             // ウィンドウ最大化
             driver.Manage().Window.Maximize();
@@ -50,11 +46,7 @@ namespace SeleniumPractice
         [TestMethod]
         public void QiitaSearchTest()
         {
-            var options = new ChromeOptions();
-            options.AddArgument("--headless");
-            options.AddArgument("--window-size=1920,1080");
-
-            using var driver = new ChromeDriver(options);
+            using var driver = CreateDriver();
 
             // ウィンドウ最大化
             driver.Manage().Window.Maximize();
@@ -81,6 +73,15 @@ namespace SeleniumPractice
 
             // 検索結果をスクリーンショットに出力
             File.WriteAllBytes("QiitaSearchTest_result_1.png", driver.GetScreenshot().AsByteArray);
+        }
+
+        private ChromeDriver CreateDriver()
+        {
+            var options = new ChromeOptions();
+            options.AddArgument("--headless");
+            options.AddArgument("--window-size=1920,1080");
+
+            return new ChromeDriver(options);
         }
     }
 }
