@@ -13,9 +13,6 @@ namespace SeleniumPractice
         {
             using var driver = CreateDriver();
 
-            // ウィンドウ最大化
-            driver.Manage().Window.Maximize();
-
             // Qiitaにアクセス
             driver.Navigate().GoToUrl("https://www.google.com/");
 
