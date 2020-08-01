@@ -1,9 +1,7 @@
-using System;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumPractice
 {
@@ -18,7 +16,6 @@ namespace SeleniumPractice
             options.AddArgument("--window-size=1920,1080");
 
             using var driver = new ChromeDriver(options);
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
             // ウィンドウ最大化
             driver.Manage().Window.Maximize();
@@ -58,7 +55,6 @@ namespace SeleniumPractice
             options.AddArgument("--window-size=1920,1080");
 
             using var driver = new ChromeDriver(options);
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
             // ウィンドウ最大化
             driver.Manage().Window.Maximize();
