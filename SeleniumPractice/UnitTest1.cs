@@ -13,7 +13,7 @@ namespace SeleniumPractice
         {
             using var driver = CreateDriver();
 
-            // Qiitaにアクセス
+            // Googleにアクセス
             driver.Navigate().GoToUrl("https://www.google.com/");
 
             // 検索ボックス取得
