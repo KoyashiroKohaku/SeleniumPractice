@@ -1,8 +1,10 @@
+using System;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumPractice
 {
@@ -12,33 +14,33 @@ namespace SeleniumPractice
         [TestMethod]
         public void QiitaSearchTest()
         {
-            using var chromeDriver = new ChromeDriver();
+            using var driver = new ChromeDriver();
 
             // ウィンドウ最大化
-            chromeDriver.Manage().Window.Maximize();
+            driver.Manage().Window.Maximize();
 
             // Qiitaにアクセス
-            chromeDriver.Navigate().GoToUrl(@"https://qiita.com/");
+            driver.Navigate().GoToUrl(@"https://qiita.com/");
 
             // 検索ボックス取得
-            var input = chromeDriver.FindElementByClassName("st-Header_searchInput");
+            var input = driver.FindElementByClassName("st-Header_searchInput");
 
             // 検索ボックスに selenium をセット
             input.SendKeys("selenium");
 
             // Enterキー押下
             input.SendKeys(Keys.Enter);
-            Assert.AreEqual(@"https://qiita.com/search?q=selenium", chromeDriver.Url);
+            Assert.AreEqual(@"https://qiita.com/search?q=selenium", driver.Url);
 
             // 検索結果をスクリーンショットに出力
-            File.WriteAllBytes("QiitaSearchTest_result_0.png", chromeDriver.GetScreenshot().AsByteArray);
+            File.WriteAllBytes("QiitaSearchTest_result_0.png", driver.GetScreenshot().AsByteArray);
 
             // 次ページへのリンクを押下
-            chromeDriver.FindElementByClassName("js-next-page-link").Click();
-            Assert.AreEqual(@"https://qiita.com/search?page=2&q=selenium", chromeDriver.Url);
+            driver.FindElementByClassName("js-next-page-link").Click();
+            Assert.AreEqual(@"https://qiita.com/search?page=2&q=selenium", driver.Url);
 
             // 検索結果をスクリーンショットに出力
-            File.WriteAllBytes("QiitaSearchTest_result_1.png", chromeDriver.GetScreenshot().AsByteArray);
+            File.WriteAllBytes("QiitaSearchTest_result_1.png", driver.GetScreenshot().AsByteArray);
         }
     }
 }
