@@ -15,6 +15,7 @@ namespace SeleniumPractice
         {
             var options = new ChromeOptions();
             options.AddArgument("--headless");
+            options.AddArgument("--window-size=1920,1080");
 
             using var driver = new ChromeDriver(options);
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
@@ -54,6 +55,7 @@ namespace SeleniumPractice
         {
             var options = new ChromeOptions();
             options.AddArgument("--headless");
+            options.AddArgument("--window-size=1920,1080");
 
             using var driver = new ChromeDriver(options);
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
