@@ -52,7 +52,7 @@ namespace SeleniumPractice
             driver.Manage().Window.Maximize();
 
             // Qiitaにアクセス
-            driver.Navigate().GoToUrl(@"https://qiita.com/");
+            driver.Navigate().GoToUrl("https://qiita.com/");
 
             // 検索ボックス取得
             var input = driver.FindElementByClassName("st-Header_searchInput");
@@ -62,14 +62,14 @@ namespace SeleniumPractice
 
             // Enterキー押下
             input.SendKeys(Keys.Enter);
-            Assert.AreEqual(@"https://qiita.com/search?q=selenium", driver.Url);
+            Assert.AreEqual("https://qiita.com/search?q=selenium", driver.Url);
 
             // 検索結果をスクリーンショットに出力
             File.WriteAllBytes("QiitaSearchTest_result_0.png", driver.GetScreenshot().AsByteArray);
 
             // 次ページへのリンクを押下
             driver.FindElementByClassName("js-next-page-link").Click();
-            Assert.AreEqual(@"https://qiita.com/search?page=2&q=selenium", driver.Url);
+            Assert.AreEqual("https://qiita.com/search?page=2&q=selenium", driver.Url);
 
             // 検索結果をスクリーンショットに出力
             File.WriteAllBytes("QiitaSearchTest_result_1.png", driver.GetScreenshot().AsByteArray);
