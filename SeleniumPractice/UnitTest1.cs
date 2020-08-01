@@ -11,7 +11,10 @@ namespace SeleniumPractice
         [TestMethod]
         public void GoogleSearchTest()
         {
-            using var driver = new ChromeDriver();
+            var options = new ChromeOptions();
+            options.AddArgument("--headless");
+
+            using var driver = new ChromeDriver(options);
 
             // ウィンドウ最大化
             driver.Manage().Window.Maximize();
@@ -46,7 +49,10 @@ namespace SeleniumPractice
         [TestMethod]
         public void QiitaSearchTest()
         {
-            using var driver = new ChromeDriver();
+            var options = new ChromeOptions();
+            options.AddArgument("--headless");
+
+            using var driver = new ChromeDriver(options);
 
             // ウィンドウ最大化
             driver.Manage().Window.Maximize();
